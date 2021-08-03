@@ -1,0 +1,1 @@
+g++ -o "/root/projects/chatdatabase/bin/x64/Debug/chatdatabase.out" -Wl,--no-undefined -Wl,-L/usr/include -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/chatdatabase/obj/x64/Debug/chatdatabasecpp.o -lmysqlclient
