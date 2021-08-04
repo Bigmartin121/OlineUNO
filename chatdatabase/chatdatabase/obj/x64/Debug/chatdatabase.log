@@ -1,10 +1,13 @@
-﻿  正在清理远程项目目录
-  正在验证源
+﻿  正在验证源
   正在将源远程复制到“120.55.55.171”
   正在验证体系结构
   正在验证体系结构
   正在启动远程生成
   正在编译源:
   chatdatabasecpp.cpp
-  正在链接对象
-  chatdatabase.vcxproj -> C:\Users\邹成智\Desktop\第二次项目\chatdatabase\bin\x64\Debug\chatdatabase.out
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(156,25): warning : conversion from ‘std::__cxx11::basic_string<char>::size_type’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(156,25): warning :   156 |    end = all_friend.find('|', start);
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(156,25): warning :       |          ~~~~~~~~~~~~~~~^~~~~~~~~~~~
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(229,2): error : expected unqualified-id before ‘}’ token
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(229,2): error :   229 |  }
+C:\Users\邹成智\Desktop\第二次项目\chatdatabase\chatdatabasecpp.cpp(229,2): error :       |  ^

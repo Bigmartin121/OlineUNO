@@ -81,6 +81,8 @@ bool ChatDataBase::database_password_correct(string name, string password)
 
 }
 
+/*
+
 //判断是否是好友关系
 bool ChatDataBase::database_whether_friend(string name1, string name2)
 {
@@ -141,6 +143,121 @@ void ChatDataBase::database_delete_friend(string name1, string name2)
 	if (mysql_query(mysql, sql) != 0) {
 		cout << "insert into friend mysql_query error" << endl;
 	}
+}
+
+*/
+
+//判断是否是好友
+bool ChatDataBase::database_whether_friend(string name1, string name2)
+{
+	char sql[128] = { 0 };
+	sprintf(sql, "select friend from %s;", name1.c_str());
+	if (mysql_query(mysql, sql) != 0)
+	{
+		cout << "mysql_query error" << endl;
+	}
+
+	MYSQL_RES* res = mysql_store_result(mysql);
+	MYSQL_ROW row = mysql_fetch_row(res);
+	if (NULL == row[0])
+	{
+		return false;
+	}
+	else
+	{
+		string all_friend(row[0]);
+		int start = 0, end = 0;
+		while (1)
+		{
+			end = all_friend.find('|', start);
+			if (-1 == end)
+			{
+				break;
+			}
+			if (name2 == all_friend.substr(start, end - start))
+			{
+				return true;
+			}
+
+			start = end + 1;
+		}
+
+		if (name2 == all_friend.substr(start, all_friend.size() - start))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+//添加好友
+void ChatDataBase::database_add_new_friend(string name1, string name2)
+{
+	char sql[1024] = { 0 };
+	sprintf(sql, "select friend from %s;", name1.c_str());
+	if (mysql_query(mysql, sql) != 0)
+	{
+		cout << "mysql_query" << endl;
+	}
+	string friend_list;
+	MYSQL_RES* res = mysql_store_result(mysql);
+	MYSQL_ROW row = mysql_fetch_row(res);
+	if (NULL == row[0])    //原来没有好友
+	{
+		friend_list.append(name2);
+	}
+	else
+	{
+		friend_list.append(row[0]);
+		friend_list += "|";
+		friend_list += name2;
+	}
+
+	memset(sql, 0, sizeof(sql));
+	sprintf(sql, "update %s set friend = '%s';", name1.c_str(), friend_list.c_str());
+	if (mysql_query(mysql, sql) != 0)
+	{
+		cout << "mysql_query error" << endl;
+	}
+}
+
+//删除好友
+void ChatDataBase::database_delete_friend(string name1, string name2)
+{
+	char sql[1024] = { 0 };
+	sprintf(sql, "select friend from %s;", name1.c_str());
+	if (mysql_query(mysql, sql) != 0)
+	{
+		cout << "mysql_query" << endl;
+	}
+	string friend_list;
+	MYSQL_RES* res = mysql_store_result(mysql);
+	MYSQL_ROW row = mysql_fetch_row(res);
+	if (NULL == row[0])    //原来没有好友
+	{
+		
+	}
+	else
+	{
+		friend_list.append(row[0]);
+		int pos = friend_list.find(name2);
+		int n = name2.size();
+		friend_list = friend_list.erase(pos, n + 1);
+	}
+
+	memset(sql, 0, sizeof(sql));
+	sprintf(sql, "update %s set friend = '%s';", name1.c_str(), friend_list.c_str());
+	if (mysql_query(mysql, sql) != 0)
+	{
+		cout << "mysql_query error" << endl;
+	}
+}
+
+
+void ChatDataBase::database_disconnect()
+{
+	mysql_close(mysql);
 }
 
 

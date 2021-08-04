@@ -22,6 +22,7 @@ public:
 	bool database_whether_friend(string, string);			//判断是否是好友关系，防止重复添加某个好友
 	void database_add_new_friend(string, string);			//添加新好友
 	void database_delete_friend(string, string);			//删除好友
+	void database_disconnect();								//断开数据库
 };
 
 
