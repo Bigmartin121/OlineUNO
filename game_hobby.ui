@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>game_hobby</class>
+ <widget class="QWidget" name="game_hobby">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>464</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>25</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>游戏大厅—BUGteam</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>130</y>
+     <width>205</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>27</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string> 游戏大厅</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="my_Friend">
+        <property name="text">
+         <string>我的好友</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="choose_Game">
+        <property name="text">
+         <string>选择游戏</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="world_Broadcast">
+        <property name="text">
+         <string>世界广播</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="quit_Game">
+        <property name="text">
+         <string>退出大厅</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
